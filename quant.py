@@ -1,6 +1,7 @@
 from __future__ import print_function
 import sys
 from random import random
+from random import randint
 from math import ceil
 
 import logging
@@ -135,7 +136,7 @@ class compactor3(list):
     def compact(self):
         self.sort()
         if len(self) >= 4:
-            pairId = random.randint(0, len(self) - 2)
+            pairId = randint(0, len(self) - 2)
         else:
             pairId = 0
         if random() < 0.5:
@@ -178,7 +179,7 @@ class compactor4(list):
     def compact(self):
         self.sort()
         if len(self) >= 4:
-            pairId = random.randint(0, len(self) - 2 )
+            pairId = randint(0, len(self) - 2 )
         else:
             pairId = 0
         if random() < 0.5:

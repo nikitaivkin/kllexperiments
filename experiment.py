@@ -1,5 +1,6 @@
 import numpy as np
-import random
+from random import random
+
 import logging
 from math import sqrt
 import quant
@@ -26,20 +27,56 @@ def doManyRuns(data, sketchName, k, runsNum):
 def doManyRunsWithPool(data, sketchName, k, runsNum):
     # rep = lambda _: Experiment.doOneRun(data, sketchName, k)
     rep = partial(doOneRun, data, sketchName)
-    pool = Pool(processes=2)
-    print (pool.map(rep, [k]*runsNum))
+    pool = Pool(processes=20)
+    res =  pool.map(rep, [k]*runsNum)
     pool.close()
     pool.join()
+    return res
 
 
 
 
 if __name__ == '__main__':
     data = Data.load("./datasets/s_random.npy")
-    # for k_i in range(5, 20):
+    resFile = open("./results/rand_q1.csv", "w")
+    for k_i in range(5, 20):
+        res = doManyRunsWithPool(data, "Quant1", 2**k_i, 100)
+        resFile.write(" ".join(map(str, res))  +"\n")
+    resFile.close()
+
+    resFile = open("./results/rand_q2.csv", "w")
+    for k_i in range(5, 20):
+        res = doManyRunsWithPool(data, "Quant2", 2 ** k_i, 100)
+        resFile.write(" ".join(map(str, res)) + "\n")
+    resFile.close()
+
+    resFile = open("./results/rand_q3.csv", "w")
+    for k_i in range(5, 20):
+        res = doManyRunsWithPool(data, "Quant3", 2 ** k_i, 100)
+        resFile.write(" ".join(map(str, res)) + "\n")
+    resFile.close()
+
+    resFile = open("./results/rand_q4.csv", "w")
+    for k_i in range(5, 20):
+        res = doManyRunsWithPool(data, "Quant4", 2 ** k_i, 100)
+        resFile.write(" ".join(map(str, res)) + "\n")
+    resFile.close()
+
+    resFile = open("./results/rand_q5.csv", "w")
+    for k_i in range(5, 20):
+        res = doManyRunsWithPool(data, "Quant5", 2 ** k_i, 100)
+        resFile.write(" ".join(map(str, res)) + "\n")
+    resFile.close()
+
+    resFile = open("./results/rand_q6.csv", "w")
+    for k_i in range(5, 20):
+        res = doManyRunsWithPool(data, "Quant6", 2 ** k_i, 100)
+        resFile.write(" ".join(map(str, res)) + "\n")
+    resFile.close()
+
     #     Experiment.doManyRuns(data, "Quant1", 2 ** k_i, 100)
     # print  doManyRuns(data, "Quant1", 128, 2)
-    doManyRunsWithPool(data, "Quant1", 128, 2)
+
 
     # a = [np.zeros(2), "a", 3 , 34]
     # print a *3
