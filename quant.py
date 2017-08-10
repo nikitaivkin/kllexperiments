@@ -238,7 +238,7 @@ class Quant6(QuantProto):
     def grow(self):
         self.compactors.append(compactor())
         self.H = len(self.compactors)
-        # self.maxSize = sum(self.capacity(height) for height in range(self.H))
+        self.maxSize = max(sum(self.capacity(height) for height in range(self.H)), 3*self.k)
 
     def capacity(self, hight):
         depth = self.H - hight - 1
@@ -270,4 +270,68 @@ class compactor(list):
             while len(self) >= 2:
                 yield self.pop()
                 _ = self.pop()
+
+####################################################################
+
+
+# class CormodeRandom:
+#     def __init__(self, eps):
+#         self.
+#
+#     def grow(self):
+#         self.compactors.append(compactor())
+#         self.H = len(self.compactors)
+#         # self.maxSize = sum(self.capacity(height) for height in range(self.H))
+#
+#     def capacity(self, hight):
+#         depth = self.H - hight - 1
+#         return min(int(ceil(self.c ** depth * self.k)) + 1,
+#                    int(1.0 / self.c ** hight) + 1)
+#
+#     def compress(self):
+#         for h in range(len(self.compactors)):
+#             if len(self.compactors[h]) >= self.capacity(h):
+#                 if h + 1 >= self.H: self.grow()
+#                 self.compactors[h + 1].\
+#                     extend(self.compactors[h].compact())
+#                 self.size = sum(len(c) for c in self.compactors)
+#                 # Here we break because we reduced the size by at least 1
+#                 break
+#                 # Removing this "break" will result in more eager
+#                 # compression which has the same theoretical guarantees
+#                 # but performs worse in practice
+
+
+class Bucket(list):
+    def __init__(self, b1=None, b2=None):
+        super(Bucket, self).__init__()
+        self.level = -1
+        if b1 is not None:
+            assert(b1.level == b2.level)
+            self.extend(sorted(b1 + b2)[random() < 0.5::2])
+            self.level = b1.level+1
+
+
+
+
+
+
+
+
+
+
+
+if __name__ == "__main__":
+    a = Bucket()
+    b = Bucket()
+    a.extend([1, 2, 3])
+    b.extend([4, 5, 6])
+    c = Bucket(a, b)
+    print(c)
+
+
+    # c.extend([7, 8, 9])
+
+    # print (a.merge(b))
+
 

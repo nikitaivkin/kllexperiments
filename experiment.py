@@ -37,30 +37,30 @@ def doManyRunsWithPool(data, sketchName, k, runsNum):
 
 
 if __name__ == '__main__':
-    data = Data.load("./datasets/s_random.npy")
-    resFile = open("./results/rand_q1.csv", "w")
-    for k_i in range(5, 20):
-        res = doManyRunsWithPool(data, "Quant1", 2**k_i, 100)
-        resFile.write(" ".join(map(str, res))  +"\n")
-    resFile.close()
-
-    resFile = open("./results/rand_q2.csv", "w")
-    for k_i in range(5, 20):
-        res = doManyRunsWithPool(data, "Quant2", 2 ** k_i, 100)
-        resFile.write(" ".join(map(str, res)) + "\n")
-    resFile.close()
-
-    resFile = open("./results/rand_q3.csv", "w")
-    for k_i in range(5, 20):
-        res = doManyRunsWithPool(data, "Quant3", 2 ** k_i, 100)
-        resFile.write(" ".join(map(str, res)) + "\n")
-    resFile.close()
-
-    resFile = open("./results/rand_q4.csv", "w")
-    for k_i in range(5, 20):
-        res = doManyRunsWithPool(data, "Quant4", 2 ** k_i, 100)
-        resFile.write(" ".join(map(str, res)) + "\n")
-    resFile.close()
+    # data = Data.load("./datasets/s_random.npy")
+    # resFile = open("./results/rand_q1.csv", "w")
+    # for k_i in range(5, 20):
+    #     res = doManyRunsWithPool(data, "Quant1", 2**k_i, 100)
+    #     resFile.write(" ".join(map(str, res))  +"\n")
+    # resFile.close()
+    #
+    # resFile = open("./results/rand_q2.csv", "w")
+    # for k_i in range(5, 20):
+    #     res = doManyRunsWithPool(data, "Quant2", 2 ** k_i, 100)
+    #     resFile.write(" ".join(map(str, res)) + "\n")
+    # resFile.close()
+    #
+    # resFile = open("./results/rand_q3.csv", "w")
+    # for k_i in range(5, 20):
+    #     res = doManyRunsWithPool(data, "Quant3", 2 ** k_i, 100)
+    #     resFile.write(" ".join(map(str, res)) + "\n")
+    # resFile.close()
+    #
+    # resFile = open("./results/rand_q4.csv", "w")
+    # for k_i in range(5, 20):
+    #     res = doManyRunsWithPool(data, "Quant4", 2 ** k_i, 100)
+    #     resFile.write(" ".join(map(str, res)) + "\n")
+    # resFile.close()
 
     resFile = open("./results/rand_q5.csv", "w")
     for k_i in range(5, 20):
