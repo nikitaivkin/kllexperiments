@@ -193,8 +193,9 @@ class compactor4(list):
 ################################################################
 class Quant5(QuantProto):
     def __init__(self, k, c=2.0 / 3.0):
-        super(Quant5, self).__init__(k, c)
         self.randomness = []
+        super(Quant5, self).__init__(k, c)
+
 
     def grow(self):
         self.compactors.append(compactor5())
