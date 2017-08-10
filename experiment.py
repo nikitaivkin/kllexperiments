@@ -37,7 +37,7 @@ def doManyRunsWithPool(data, sketchName, k, runsNum):
 
 
 if __name__ == '__main__':
-    # data = Data.load("./datasets/s_random.npy")
+    data = Data.load("./datasets/s_random.npy")
     # resFile = open("./results/rand_q1.csv", "w")
     # for k_i in range(5, 20):
     #     res = doManyRunsWithPool(data, "Quant1", 2**k_i, 100)
