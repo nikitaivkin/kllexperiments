@@ -62,10 +62,11 @@ class Data:
 
 if __name__ == '__main__':
     # Data.gen2file("./datasets/", 10000000, "sqrt")
-    Data.gen2file("./datasets/", 10000000, "zoomin")
-    Data.gen2file("./datasets/", 10000000, "zoomout")
-    Data.gen2file("./datasets/", 10000000, "sorted")
-    Data.gen2file("./datasets/", 10000000, "random")
+    # Data.gen2file("./datasets/", 10000000, "zoomin")
+    # Data.gen2file("./datasets/", 10000000, "zoomout")
+    # Data.gen2file("./datasets/", 10000000, "sorted")
+    # Data.gen2file("./datasets/", 10000000, "random")
+    Data.gen2file("./datasets/tiny/", 10000000, "random")
 
     # data = Data.load("./s_test.npy")
     # for i in range(10):

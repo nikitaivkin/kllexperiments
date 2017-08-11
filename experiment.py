@@ -27,7 +27,7 @@ def doManyRuns(data, sketchName, k, runsNum):
 def doManyRunsWithPool(data, sketchName, k, runsNum):
     # rep = lambda _: Experiment.doOneRun(data, sketchName, k)
     rep = partial(doOneRun, data, sketchName)
-    pool = Pool(processes=20)
+    pool = Pool(processes=3)
     res =  pool.map(rep, [k]*runsNum)
     pool.close()
     pool.join()
@@ -45,11 +45,13 @@ if __name__ == '__main__':
     # resFile.close()
     #
     # resFile = open("./results/rand_q2.csv", "w")
+    # print("Quant2")
     # for k_i in range(5, 20):
+    #     print (k_i)
     #     res = doManyRunsWithPool(data, "Quant2", 2 ** k_i, 100)
     #     resFile.write(" ".join(map(str, res)) + "\n")
     # resFile.close()
-    #
+    # #
     # resFile = open("./results/rand_q3.csv", "w")
     # for k_i in range(5, 20):
     #     res = doManyRunsWithPool(data, "Quant3", 2 ** k_i, 100)
@@ -62,17 +64,89 @@ if __name__ == '__main__':
     #     resFile.write(" ".join(map(str, res)) + "\n")
     # resFile.close()
 
-    resFile = open("./results/rand_q5.csv", "w")
-    for k_i in range(5, 20):
+    # resFile = open("./results/rand_q5.csv", "w")
+    # for k_i in range(5, 20):
+    #     res = doManyRunsWithPool(data, "Quant5", 2 ** k_i, 100)
+    #     resFile.write(" ".join(map(str, res)) + "\n")
+    # resFile.close()
+    #
+    # print("Quant6")
+    # resFile = open("./results/rand_q6.csv", "w")
+    # for k_i in range(5, 20):
+    #     print(k_i)
+    #     res = doManyRunsWithPool(data, "Quant6", 2 ** k_i, 100)
+    #     resFile.write(" ".join(map(str, res)) + "\n")
+    # resFile.close()
+
+    # resFile = open("./results/rand_cr.csv", "w")
+    # for k_i in range(5, 12):
+    #     res = doManyRunsWithPool(data, "CormodeRandom", 2 ** k_i, 100)
+    #     resFile.write(" ".join(map(str, res)) + "\n")
+    # resFile.close()
+
+    # data = Data.load("./datasets/tiny/s_random.npy")
+    # resFile = open("./results/tiny/rand_q1.csv", "w")
+    # for k_i in range(5, 20):
+    #     res = doManyRunsWithPool(data, "Quant1", 2**k_i, 100)
+    #     resFile.write(" ".join(map(str, res))  +"\n")
+    # resFile.close()
+    #
+    # resFile = open("./results/tiny/rand_q2.csv", "w")
+    #
+    # print("Quant2")
+    # for k_i in range(5, 20):
+    #     print (k_i)
+    #     res = doManyRunsWithPool(data, "Quant2", 2 ** k_i, 100)
+    #     resFile.write(" ".join(map(str, res)) + "\n")
+    # resFile.close()
+    #
+    # print("Quant3")#
+    # resFile = open("./results/tiny/rand_q3.csv", "w")
+    # for k_i in range(5, 20):
+    #     res = doManyRunsWithPool(data, "Quant3", 2 ** k_i, 100)
+    #     resFile.write(" ".join(map(str, res)) + "\n")
+    # resFile.close()
+    #
+    # print("Quant4")
+    # resFile = open("./results/tiny/rand_q4.csv", "w")
+    # for k_i in range(5, 20):
+    #     res = doManyRunsWithPool(data, "Quant4", 2 ** k_i, 100)
+    #     resFile.write(" ".join(map(str, res)) + "\n")
+    # resFile.close()
+    #
+    print("Quant5")
+    resFile = open("./results/tiny/rand_q5.csv", "w")
+    for k_i in range(5, 12):
+        print(k_i)
         res = doManyRunsWithPool(data, "Quant5", 2 ** k_i, 100)
         resFile.write(" ".join(map(str, res)) + "\n")
     resFile.close()
 
-    resFile = open("./results/rand_q6.csv", "w")
-    for k_i in range(5, 20):
-        res = doManyRunsWithPool(data, "Quant6", 2 ** k_i, 100)
+    # print("Quant6")
+    # resFile = open("./results/tiny/rand_q6.csv", "w")
+    # for k_i in range(5, 20):
+    #     print(k_i)
+    #     res = doManyRunsWithPool(data, "Quant6", 2 ** k_i, 100)
+    #     resFile.write(" ".join(map(str, res)) + "\n")
+    # resFile.close()
+
+    print("Quant7")
+    resFile = open("./results/tiny/rand_q7.csv", "w")
+    for k_i in range(5, 12):
+        print(k_i)
+        res = doManyRunsWithPool(data, "Quant7", 2 ** k_i, 100)
         resFile.write(" ".join(map(str, res)) + "\n")
     resFile.close()
+
+
+    # resFile = open("./results/tiny/rand_cr.csv", "w")
+    # for k_i in range(5, 12):
+    #     res = doManyRunsWithPool(data, "CormodeRandom", 2 ** k_i, 100)
+    #     resFile.write(" ".join(map(str, res)) + "\n")
+    # resFile.close()
+
+
+
 
     #     Experiment.doManyRuns(data, "Quant1", 2 ** k_i, 100)
     # print  doManyRuns(data, "Quant1", 128, 2)

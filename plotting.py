@@ -21,6 +21,7 @@ class Plotting:
         # return data
 
 if __name__ == '__main__':
-    Plotting.plotResults(["results/rand_q1.csv", "results/rand_q2.csv"])
+    # Plotting.plotResults(["results/rand_q1.csv", "results/rand_q2.csv", "results/rand_q5.csv", "results/rand_q6.csv"])
+    Plotting.plotResults(["results/tiny/rand_q5.csv", "results/tiny/rand_q7.csv"])
 
 
