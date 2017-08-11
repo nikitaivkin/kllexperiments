@@ -27,7 +27,7 @@ def doManyRuns(data, sketchName, k, runsNum):
 def doManyRunsWithPool(data, sketchName, k, runsNum):
     # rep = lambda _: Experiment.doOneRun(data, sketchName, k)
     rep = partial(doOneRun, data, sketchName)
-    pool = Pool(processes=3)
+    pool = Pool(processes=20)
     res =  pool.map(rep, [k]*runsNum)
     pool.close()
     pool.join()
