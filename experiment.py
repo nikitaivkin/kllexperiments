@@ -44,19 +44,19 @@ def doManyRunsWithPoolForRangeOfKs(data, algoName, resfilePath, k_start, k_end, 
 
 if __name__ == '__main__':
 
-    runsNum = 50
-    poolSize = 3
+    runsNum = 20
+    poolSize = 2
     k_start = 5
     k_end = 12
-    data = Data.load("./datasets/tiny/s_random.npy")
-
-    doManyRunsWithPoolForRangeOfKs(data, "Quant1", "./results/rand_q1.csv", k_start, k_end, runsNum, poolSize)
-    doManyRunsWithPoolForRangeOfKs(data, "Quant1S", "./results/rand_q1s.csv", k_start, k_end, runsNum, poolSize)
-    doManyRunsWithPoolForRangeOfKs(data, "Quant2", "./results/rand_q2.csv", k_start, k_end, runsNum, poolSize)
-    doManyRunsWithPoolForRangeOfKs(data, "Quant2S", "./results/rand_q2s.csv", k_start, k_end, runsNum, poolSize)
-    doManyRunsWithPoolForRangeOfKs(data, "Quant5", "./results/rand_q5.csv", k_start, k_end, runsNum, poolSize)
-    doManyRunsWithPoolForRangeOfKs(data, "Quant5S", "./results/rand_q5s.csv", k_start, k_end, runsNum, poolSize)
-    doManyRunsWithPoolForRangeOfKs(data, "CormodeRandom", "./results/rand_cr.csv", k_start, k_end, runsNum, poolSize)
+    for i in range(6,9):
+        data = Data.load("./datasets/s_random_" + str(10**i) + ".npy")
+        doManyRunsWithPoolForRangeOfKs(data, "Quant1", "./results/rand_q1_" + str(10**i) + ".csv", k_start, k_end, runsNum, poolSize)
+        doManyRunsWithPoolForRangeOfKs(data, "Quant1S", "./results/rand_q1s_" + str(10**i) + ".csv", k_start, k_end, runsNum, poolSize)
+        doManyRunsWithPoolForRangeOfKs(data, "Quant2", "./results/rand_q2_" + str(10**i) + ".csv", k_start, k_end, runsNum, poolSize)
+        doManyRunsWithPoolForRangeOfKs(data, "Quant2S", "./results/rand_q2s_" + str(10**i) + ".csv", k_start, k_end, runsNum, poolSize)
+        doManyRunsWithPoolForRangeOfKs(data, "Quant5", "./results/rand_q5_" + str(10**i) + ".csv", k_start, k_end, runsNum, poolSize)
+        doManyRunsWithPoolForRangeOfKs(data, "Quant5S", "./results/rand_q5s_" + str(10**i) + ".csv", k_start, k_end, runsNum, poolSize)
+        doManyRunsWithPoolForRangeOfKs(data, "CormodeRandom", "./results/rand_cr_" + str(10**i) + ".csv", k_start, k_end, runsNum, poolSize)
 
 
     # resFile = open("./results/rand_q1.csv", "w")
