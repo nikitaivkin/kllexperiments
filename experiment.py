@@ -45,7 +45,7 @@ def doManyRunsWithPoolForRangeOfKs(data, algoName, resfilePath, k_start, k_end, 
 if __name__ == '__main__':
 
     runsNum = 20
-    poolSize = 2
+    poolSize = 20
     k_start = 5
     k_end = 12
     for i in range(6,9):
