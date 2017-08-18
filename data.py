@@ -61,7 +61,7 @@ class Data:
 
 
 if __name__ == '__main__':
-    for i in range(6,11):
+    for i in range(6,9):
         # Data.gen2file("./datasets/", 10**i, "sqrt")
         Data.gen2file("./datasets/", 10**i, "zoomin")
         Data.gen2file("./datasets/", 10**i, "zoomout")
