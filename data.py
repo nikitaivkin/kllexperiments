@@ -62,10 +62,14 @@ class Data:
 
 if __name__ == '__main__':
     for i in range(6,9):
+        print i
         # Data.gen2file("./datasets/", 10**i, "sqrt")
         Data.gen2file("./datasets/", 10**i, "zoomin")
+        print i
         Data.gen2file("./datasets/", 10**i, "zoomout")
+        print i
         Data.gen2file("./datasets/", 10**i, "sorted")
+        print i
         Data.gen2file("./datasets/", 10**i, "random")
 
 
