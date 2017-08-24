@@ -42,7 +42,6 @@ def doManyRunsWithPoolForRangeOfKs(data, algoName, resfilePath, k_start, k_end, 
         resFile.write(" ".join(map(str, res)) + "\n")
     resFile.close()
 
-
 if __name__ == '__main__':
 
     runsNum = 20

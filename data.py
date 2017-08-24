@@ -52,7 +52,7 @@ class Data:
         data = np.zeros(n)
         for item_i, item in enumerate(Data.onTheFly(n, order)):
             data[item_i] = item
-        np.save(path + "s_" + order + "_" + str(n) + ".npy", data)
+        np.save(path, data)
 
     @staticmethod
     def getQuantiles(data, nums):
@@ -61,16 +61,16 @@ class Data:
 
 
 if __name__ == '__main__':
-    for i in range(6,9):
+    for i in range(6,8):
         print i
         # Data.gen2file("./datasets/", 10**i, "sqrt")
-        Data.gen2file("./datasets/", 10**i, "zoomin")
+        Data.gen2file("./datasets/zi" + str(i), 10**i, "zoomin")
         print i
-        Data.gen2file("./datasets/", 10**i, "zoomout")
+        Data.gen2file("./datasets/zo" + str(i), 10**i, "zoomout")
         print i
-        Data.gen2file("./datasets/", 10**i, "sorted")
+        Data.gen2file("./datasets/s" + str(i), 10**i, "sorted")
         print i
-        Data.gen2file("./datasets/", 10**i, "random")
+        Data.gen2file("./datasets/r" + str(i), 10**i, "random")
 
 
 

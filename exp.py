@@ -32,50 +32,58 @@ def runExp(start, end):
 
 def installPy2(sshList):
     outList = sshParRequest(sshList, "export DEBIAN_FRONTEND=noninteractive;  sudo apt-get -y install python-minimal; ")
-    sshWaitToFinish(outList)
+    sshWaitToFinish(outList) # printOutList(outList)
+    outList = sshParRequest(sshList, "export DEBIAN_FRONTEND=noninteractive; sudo apt-get -y install python-numpy python-scipy python-matplotlib ")
+    sshWaitToFinish(outList) #printOutList(outList)
 
 def cloneRepo(sshList):
+    outList = sshParRequest(sshList, '''sudo rm -r  /home/ubuntu/kllexperiments;''')
+    sshWaitToFinish(outList) # printOutList(outList)
     outList = sshParRequest(sshList, '''git clone https://github.com/nikitaivkin/kllexperiments''')
-    sshWaitToFinish(outList)
+    sshWaitToFinish(outList) # printOutList(outList)
 
 def poolGit(sshList):
-    outList = sshParRequest(sshList, '''cd kllexperiments''')
-    sshWaitToFinish(outList)
-    outList = sshParRequest(sshList, '''git pull''')
-    sshWaitToFinish(outList)
+    outList = sshParRequest(sshList, '''cd  /home/ubuntu/kllexperiments; git pull''')
+    sshWaitToFinish(outList) # printOutList(outList)
 
 def copyData(sshList, folder):
-    sshParRequest(sshList, "mkdir /home/ubuntu/kllexperiments/datasets")
+    sshParRequest(sshList, "mkdir -p /home/ubuntu/kllexperiments/datasets")
+    sshWaitToFinish(outList) # printOutList(outList)
     sshParSendFolder(sshList, folder, "/home/ubuntu/kllexperiments/datasets")
 
 def genData(sshList):
-    outList = sshParRequest(sshList, "mkdir /home/ubuntu/kllexperiments/datasets; cd /home/ubuntu/kllexperiments")
-    sshWaitToFinish(outList)
-    outList = sshParRequest(sshList, '''python2 data.py''')
-    sshWaitToFinish(outList)
+    outList = sshParRequest(sshList, "mkdir -p /home/ubuntu/kllexperiments/datasets")
+    sshWaitToFinish(outList) # printOutList(outList)
+    outList = sshParRequest(sshList, '''cd /home/ubuntu/kllexperiments; python2 data.py''')
+    sshWaitToFinish(outList) # printOutList(outList)
 
 
 def prepCodeAndData(sshList):
     print "installing python2"
     installPy2(sshList)
-    print "Done"
 
     print "cloning repo on remote nodes"
     cloneRepo(sshList)
-    print "Done"
 
     print "pulling fresh code from git"
     poolGit(sshList)
-    print "Done"
 
     print "generating datasets on remote nodes"
     genData(sshList)
-    print "Done"
-
+    
     # print "sending datasets to remote nodes"
     # copyData(sshList, "/home/local/ANT/ivkin/projects/amazon/quantiles/kllexperiments/datasets")
     # print "Done"
 
+def genQueue(datasets, algos, srange, crange,repsNum, path):
+    f = open(path, "w")
+    for dataset in datasets:
+        for algo in algos:
+            for space in srange:
+                for c in crange:
+                    for rep in range(repsNum):
+                        f.write(" ".join([dataset,algo,str(space), str(c), str(rep)]) + "\n")
+                if algo == 'CormodeRandom': break;
 
 
 def runAllExp():
@@ -89,20 +97,20 @@ def runAllExp():
 
     prepCodeAndData(sshList)
 
-    # queue = readSettingQueue("queue.csv")
-    # batchSize = 10
-    # queueSize = len(queue)
-    # batchBegin = 0
-    # nodesN = len(sshList)
-    # resFile = open("results", "w")
-    # while batchBegin < queueSize - batchSize:
-    #     print str(batchBegin) + " out of " + str(queueSize)
-    #     for ssh in sshList:
-    #         outList.append(sshRequest(ssh, '''echo ''' +str(batchBegin) +  ''',''' + str(batchBegin + batchSize) + ''')"'''))
-    #         # outList.append(sshRequest(ssh, '''python27 -c "import exp; exp.runExp(''' +str(batchBegin) +  ''',''' + str(batchBegin + batchSize) + ''')"'''))
-    #         batchBegin += batchSize
-    #     printOutList2File(outList, resFile)
-    # resFile.close()
+    queue = readSettingQueue("queue.csv")
+    batchSize = 10
+    queueSize = len(queue)
+    batchBegin = 0
+    nodesN = len(sshList)
+    resFile = open("results", "w")
+    while batchBegin < queueSize - batchSize:
+        print str(batchBegin) + " out of " + str(queueSize)
+        for ssh in sshList:
+            outList.append(sshRequest(ssh, '''echo ''' +str(batchBegin) +  ''',''' + str(batchBegin + batchSize) + ''')"'''))
+            # outList.append(sshRequest(ssh, '''python27 -c "import exp; exp.runExp(''' +str(batchBegin) +  ''',''' + str(batchBegin + batchSize) + ''')"'''))
+            batchBegin += batchSize
+        printOutList2File(outList, resFile)
+    resFile.close()
 
 
 def readSettingQueue(path):
@@ -113,4 +121,16 @@ def readSettingQueue(path):
 
 
 if __name__ == '__main__':
+
+    datasets = ["./datasets/s6", "./datasets/s7",
+                "./datasets/r6", "./datasets/r7",
+                "./datasets/zi6", "./datasets/zi7",
+                "./datasets/zo6", "./datasets/zo7"]
+    algos = ["Quant5S" , "CormodeRandom"]
+    srange = 2**np.array(range(5,9))
+    crange = np.arange(0.51, 0.99, 0.05)
+    repsNum = 20
+    path = "./queue.csv"
+    genQueue(datasets, algos, srange, crange, repsNum, path)
+
     runAllExp()

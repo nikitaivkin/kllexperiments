@@ -9,7 +9,8 @@ import time
 import logging
 
 class QuantProto(object):
-    def __init__(self, k, c=2.0 / 3.0):
+    def __init__(self, s, c=2.0 / 3.0):
+        k = int(s*(1-c))
         if k <= 0: raise ValueError("k must be a positive integer.")
         if c <= 0.5 or c > 1.0: raise ValueError("c must larger than 0.5 and at most 1.0.")
         self.k = k
@@ -89,8 +90,8 @@ class CompactorProto(list):
 ################################################################
 
 class QuantProtoS(QuantProto):
-    def __init__(self, k, c=2.0 / 3.0):
-        super(QuantProtoS, self).__init__(k, c)
+    def __init__(self, s, c=2.0 / 3.0):
+        super(QuantProtoS, self).__init__(s, c)
         self.sampler = Sampler()
         self.D = 0 # hight and depth
 
@@ -140,17 +141,17 @@ class QuantProtoS(QuantProto):
 ################################################################
 
 class Quant1(QuantProto):
-    def __init__(self, k, c=2.0 / 3.0):
-        super(Quant1, self).__init__(k, c)
+    def __init__(self, s, c=2.0 / 3.0):
+        super(Quant1, self).__init__(s, c)
 ##############################################################
 class Quant1S(QuantProtoS):
-    def __init__(self, k, c=2.0 / 3.0):
-        super(Quant1S, self).__init__(k, c)
+    def __init__(self, s, c=2.0 / 3.0):
+        super(Quant1S, self).__init__(s, c)
 ################################################################
 
 class Quant2(QuantProto):
-    def __init__(self, k, c=2.0 / 3.0):
-        super(Quant2, self).__init__(k, c)
+    def __init__(self, s, c=2.0 / 3.0):
+        super(Quant2, self).__init__(s, c)
 
 
     def compress(self):
@@ -163,8 +164,8 @@ class Quant2(QuantProto):
 
 ###############################################################
 class Quant2S(QuantProtoS):
-    def __init__(self, k, c=2.0 / 3.0):
-        super(Quant2S, self).__init__(k, c)
+    def __init__(self, s, c=2.0 / 3.0):
+        super(Quant2S, self).__init__(s, c)
 
 
     def compress(self):
@@ -180,8 +181,8 @@ class Quant2S(QuantProtoS):
 
 ################################################################
 class Quant3(QuantProto):
-    def __init__(self, k, c=2.0 / 3.0):
-        super(Quant3, self).__init__(k, c)
+    def __init__(self, s, c=2.0 / 3.0):
+        super(Quant3, self).__init__(s, c)
 
     def compress(self):
         for h in range(len(self.compactors)):
@@ -216,8 +217,8 @@ class compactor3(list):
 
 ################################################################
 class  Quant4(QuantProto):
-    def __init__(self, k, c = 2.0/3.0):
-        super(Quant4, self).__init__(k, c)
+    def __init__(self, s, c = 2.0/3.0):
+        super(Quant4, self).__init__(s, c)
 
     def compress(self):
         minError = 1000000
@@ -259,9 +260,9 @@ class compactor4(list):
 
 ################################################################
 class Quant5(QuantProto):
-    def __init__(self, k, c=2.0 / 3.0):
+    def __init__(self, s, c=2.0 / 3.0):
         self.randomness = []
-        super(Quant5, self).__init__(k, c)
+        super(Quant5, self).__init__(s, c)
 
 
     def grow(self):
@@ -294,9 +295,9 @@ class compactor5(list):
 
 ################################################################33
 class Quant5S(QuantProtoS):
-    def __init__(self, k, c=2.0 / 3.0):
+    def __init__(self, s, c=2.0 / 3.0):
         self.randomness = []
-        super(Quant5S, self).__init__(k, c)
+        super(Quant5S, self).__init__(s, c)
 
     def grow(self):
         self.compactors.append(compactor5())
@@ -330,8 +331,8 @@ class Quant5S(QuantProtoS):
 ################################################################
 
 class Quant6(QuantProto):
-    def __init__(self, k, c=2.0 / 3.0):
-        super(Quant6, self).__init__(k, c)
+    def __init__(self, s, c=2.0 / 3.0):
+        super(Quant6, self).__init__(s, c)
         self.maxSize = 3 * self.k
         # logging.basicConfig(filename='log', level=logging.DEBUG)
 
@@ -382,9 +383,9 @@ class Quant6(QuantProto):
 
 ####################################################################
 class Quant7(QuantProto):
-    def __init__(self, k, c=2.0 / 3.0):
+    def __init__(self, s, c=2.0 / 3.0):
         self.randomness = []
-        super(Quant7, self).__init__(k, c)
+        super(Quant7, self).__init__(s, c)
 
 
     def grow(self):
@@ -424,9 +425,9 @@ class compactor7(list):
 ######################################################################
 
 class CormodeRandom:
-    def __init__(self, k):
-        eps = self.space2eps(3*k)
-        print(str(eps) +  " " + str(k))
+    def __init__(self, s, _):
+        eps = self.space2eps(s)
+        print(str(eps) +  " " + str(s))
         self.b = int(ceil((log(1./eps,2) + 1)/2.)*2)
         self.s = 1./eps*sqrt(log(1./eps,2))
         self.alBuckets = [Bucket() for _ in range(self.b)]
@@ -592,8 +593,8 @@ if __name__ == "__main__":
     # print(t4-t3)
 
 
-    # q = CormodeRandom(32)
-    q = Quant5(32)
+    q = CormodeRandom(96, Noneu)
+    # q = Quant5(96, 2./3)
     a = np.array(range(1000000))
     np.random.shuffle(a)
     # print("here")
