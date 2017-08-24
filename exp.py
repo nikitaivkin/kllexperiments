@@ -45,11 +45,15 @@ def cloneRepo(sshList):
 def poolGit(sshList):
     outList = sshParRequest(sshList, '''cd  /home/ubuntu/kllexperiments; git pull''')
     sshWaitToFinish(outList) # printOutList(outList)
-
-def copyData(sshList, folder):
     sshParRequest(sshList, "mkdir -p /home/ubuntu/kllexperiments/datasets")
     sshWaitToFinish(outList) # printOutList(outList)
+
+
+def copyData(sshList, folder):
     sshParSendFolder(sshList, folder, "/home/ubuntu/kllexperiments/datasets")
+
+def copyQueue(sshList):
+    sshParSendFile(sshList, "queue.csv", "/home/ubuntu/kllexperiments/")
 
 def genData(sshList):
     outList = sshParRequest(sshList, "mkdir -p /home/ubuntu/kllexperiments/datasets")
@@ -102,9 +106,10 @@ def runAllExp():
     queueSize = len(queue)
     batchBegin = 0
     nodesN = len(sshList)
-    resFile = open("results", "w")
+    resFile = open("results.csv", "w")
     while batchBegin < queueSize - batchSize:
         print str(batchBegin) + " out of " + str(queueSize)
+        outList  = []
         for ssh in sshList:
             outList.append(sshRequest(ssh, '''echo ''' +str(batchBegin) +  ''',''' + str(batchBegin + batchSize) + ''')"'''))
             # outList.append(sshRequest(ssh, '''python27 -c "import exp; exp.runExp(''' +str(batchBegin) +  ''',''' + str(batchBegin + batchSize) + ''')"'''))

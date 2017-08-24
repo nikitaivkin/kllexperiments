@@ -39,7 +39,7 @@ def printOutList(outList):
         for line in stdout.read().splitlines() + stderr.read().splitlines():
             print line
 
-def printOutList2File(outList, filedD):
+def printOutList2File(outList, fileD):
     for std_i, (stdout, stderr) in enumerate(outList):
         for line in stdout.read().splitlines() + stderr.read().splitlines():
             fileD.write(line + "\n")
