@@ -28,7 +28,9 @@ def runExp(start, end):
         estRanks = sketch.ranks()
         nums, estRanks = zip(*estRanks)
         realRanks = Data.getQuantiles(data, nums)
-        print ", ".join(setting.append(np.max(np.abs(np.array(realRanks) - np.array(estRanks)))))
+        settingNew = setting[:]
+        settingNew.append(np.max(np.abs(np.array(realRanks) - np.array(estRanks))))
+        print ", ".join(settingNew)
 
 def installPy2(sshList):
     outList = sshParRequest(sshList, "export DEBIAN_FRONTEND=noninteractive;  sudo apt-get -y install python-minimal; ")
@@ -73,8 +75,8 @@ def prepCodeAndData(sshList):
     print "pulling fresh code from git"
     poolGit(sshList)
 
-    # print "generating datasets on remote nodes"
-    # genData(sshList)
+    print "generating datasets on remote nodes"
+    genData(sshList)
     
     # print "sending datasets to remote nodes"
     # copyData(sshList, "/home/local/ANT/ivkin/projects/amazon/quantiles/kllexperiments/datasets")
@@ -134,10 +136,10 @@ def readSettingQueue(path):
 
 if __name__ == '__main__':
 
-    datasets = ["./datasets/s6", "./datasets/s7",
-                "./datasets/r6", "./datasets/r7",
-                "./datasets/zi6", "./datasets/zi7",
-                "./datasets/zo6", "./datasets/zo7"]
+    datasets = ["./datasets/s6.npy", "./datasets/s7.npy",
+                "./datasets/r6.npy", "./datasets/r7.npy",
+                "./datasets/zi6.npy", "./datasets/zi7.npy",
+                "./datasets/zo6.npy", "./datasets/zo7.npy"]
     algos = ["Quant5S" , "CormodeRandom"]
     srange = 2**np.array(range(5,9))
     crange = np.arange(0.51, 0.99, 0.05)
