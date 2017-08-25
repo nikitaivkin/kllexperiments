@@ -29,7 +29,7 @@ def runExp(start, end):
         nums, estRanks = zip(*estRanks)
         realRanks = Data.getQuantiles(data, nums)
         settingNew = setting[:]
-        settingNew.append(np.max(np.abs(np.array(realRanks) - np.array(estRanks))))
+        settingNew.append(str(np.max(np.abs(np.array(realRanks) - np.array(estRanks)))))
         print ", ".join(settingNew)
 
 def installPy2(sshList):
