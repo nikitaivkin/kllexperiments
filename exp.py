@@ -35,7 +35,7 @@ def runExp(start, end):
 def installPy2(sshList):
     outList = sshParRequest(sshList, "export DEBIAN_FRONTEND=noninteractive;  sudo apt-get -y install python-minimal; ")
     sshWaitToFinish(outList) # printOutList(outList)
-    outList = sshParRequest(sshList, "export DEBIAN_FRONTEND=noninteractive; sudo apt-get -y install python-numpy python-scipy python-matplotlib python-paramiko")
+    outList = sshParRequest(sshList, "export DEBIAN_FRONTEND=noninteractive; sudo apt-get -y install python-numpy python-paramiko;")
     sshWaitToFinish(outList) #printOutList(outList)
 
 
@@ -66,7 +66,7 @@ def genData(sshList):
 
 
 def prepCodeAndData(sshList):
-    print "installing python2"
+    print "installing python2 and packages"
     installPy2(sshList)
 
     print "cloning repo on remote nodes"
@@ -122,7 +122,6 @@ def runAllExp():
             outList.append(sshRequest(ssh, '''cd kllexperiments; python2    -c "import exp; exp.runExp(''' +str(batchBegin) +  ''',''' + str(batchBegin + batchSize) + ''')"'''))
             batchBegin += batchSize
         printOutList2File(outList, resFile)
-        break
 
     resFile.close()
 
@@ -136,13 +135,14 @@ def readSettingQueue(path):
 
 if __name__ == '__main__':
 
-    datasets = ["./datasets/s6.npy", "./datasets/s7.npy",
-                "./datasets/r6.npy", "./datasets/r7.npy",
+    datasets = ["./datasets/r6.npy", "./datasets/r7.npy",
+                "./datasets/s6.npy", "./datasets/s7.npy",
                 "./datasets/zi6.npy", "./datasets/zi7.npy",
                 "./datasets/zo6.npy", "./datasets/zo7.npy"]
-    algos = ["Quant5S" , "CormodeRandom"]
+    algos = ["Quant2S", "Quant5S" , "CormodeRandom"]
     srange = 2**np.array(range(5,9))
-    crange = np.arange(0.51, 0.99, 0.05)
+    # crange = np.arange(0.51, 0.99, 0.05)
+    crange = np.arange(0.1, 0.5, 0.05)
     repsNum = 20
     path = "./queue.csv"
     genQueue(datasets, algos, srange, crange, repsNum, path)

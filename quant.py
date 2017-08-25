@@ -12,7 +12,7 @@ class QuantProto(object):
     def __init__(self, s, c=2.0 / 3.0):
         k = int(s*(1-c))
         if k <= 0: raise ValueError("k must be a positive integer.")
-        if c <= 0.5 or c > 1.0: raise ValueError("c must larger than 0.5 and at most 1.0.")
+            # if c <= 0.5 or c > 1.0: raise ValueError("c must larger than 0.5 and at most 1.0.")
         self.k = k
         self.c = c
         self.compactors = []
