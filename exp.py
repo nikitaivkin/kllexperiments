@@ -16,7 +16,7 @@ def runExp(start, end):
     data = None
     for setting_i, setting in enumerate(queue):
         if dataPath != setting[0]:
-            setting[0] = dataPath
+            dataPath = setting[0]
             data = Data.load(dataPath)
         sketchName = setting[1]
         space = int(setting[2])
@@ -54,7 +54,7 @@ def copyData(sshList, folder):
     sshParSendFolder(sshList, folder, "/home/ubuntu/kllexperiments/datasets")
 
 def copyQueue(sshList):
-    sshParSendFile(sshList, "queue.csv", "/home/ubuntu/kllexperiments/")
+    sshParSendFile(sshList, "queue.csv", "/home/ubuntu/kllexperiments/queue.csv")
 
 def genData(sshList):
     outList = sshParRequest(sshList, "mkdir -p /home/ubuntu/kllexperiments/datasets")
@@ -80,6 +80,10 @@ def prepCodeAndData(sshList):
     # copyData(sshList, "/home/local/ANT/ivkin/projects/amazon/quantiles/kllexperiments/datasets")
     # print "Done"
 
+    print "sending queue to remote nodes"
+    copyQueue(sshList)
+    print "Done"
+
 def genQueue(datasets, algos, srange, crange,repsNum, path):
     f = open(path, "w")
     for dataset in datasets:
@@ -100,7 +104,7 @@ def runAllExp():
     sshList = sshParConnect(hostfile)
     print "Done"
 
-    # prepCodeAndData(sshList)
+    prepCodeAndData(sshList)
 
     queue = readSettingQueue("queue.csv")
     batchSize = 10
