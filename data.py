@@ -47,18 +47,30 @@ class Data:
             for item in items:
                 yield item
 
-    @staticmethod
-    def gen2file(path, n, order):
-        data = np.zeros(n)
-        for item_i, item in enumerate(Data.onTheFly(n, order)):
-            data[item_i] = item
-        np.save(path, data)
+    #     print quants[i]
 
     @staticmethod
     def getQuantiles(data, nums):
         return np.searchsorted(np.sort(data), nums)
 
 
+
+
+
+
+    # Data.gen2file("./datasets/tiny/", 1000000, "random")
+
+    # data = Data.load("./s_test.npy")
+    # for i in range(10):
+    #     print data[i]
+    # quants = Data.getQuantiles("./s_test.npy", [123,321])
+    # for i in range(2):
+    @staticmethod
+    def gen2file(path, n, order):
+        data = np.zeros(n)
+        for item_i, item in enumerate(Data.onTheFly(n, order)):
+            data[item_i] = item
+        np.save(path, data)
 
 if __name__ == '__main__':
     for i in range(6,8):
@@ -71,16 +83,4 @@ if __name__ == '__main__':
         Data.gen2file("./datasets/s" + str(i), 10**i, "sorted")
         print i
         Data.gen2file("./datasets/r" + str(i), 10**i, "random")
-
-
-
-    # Data.gen2file("./datasets/tiny/", 1000000, "random")
-
-    # data = Data.load("./s_test.npy")
-    # for i in range(10):
-    #     print data[i]
-    # quants = Data.getQuantiles("./s_test.npy", [123,321])
-    # for i in range(2):
-    #     print quants[i]
-
 

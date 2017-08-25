@@ -10,7 +10,7 @@ from multiprocessing import Pool
 from functools import partial
 
 def runExp(start, end):
-    queue = readSettingQueue("queue.csv")
+    queue = readSettingQueue("/home/ubuntu/kllexperiments/queue.csv")
     queue = queue[start:end]
     dataPath = ''
     data = None
@@ -33,8 +33,9 @@ def runExp(start, end):
 def installPy2(sshList):
     outList = sshParRequest(sshList, "export DEBIAN_FRONTEND=noninteractive;  sudo apt-get -y install python-minimal; ")
     sshWaitToFinish(outList) # printOutList(outList)
-    outList = sshParRequest(sshList, "export DEBIAN_FRONTEND=noninteractive; sudo apt-get -y install python-numpy python-scipy python-matplotlib ")
+    outList = sshParRequest(sshList, "export DEBIAN_FRONTEND=noninteractive; sudo apt-get -y install python-numpy python-scipy python-matplotlib python-paramiko")
     sshWaitToFinish(outList) #printOutList(outList)
+
 
 def cloneRepo(sshList):
     outList = sshParRequest(sshList, '''sudo rm -r  /home/ubuntu/kllexperiments;''')
@@ -72,8 +73,8 @@ def prepCodeAndData(sshList):
     print "pulling fresh code from git"
     poolGit(sshList)
 
-    print "generating datasets on remote nodes"
-    genData(sshList)
+    # print "generating datasets on remote nodes"
+    # genData(sshList)
     
     # print "sending datasets to remote nodes"
     # copyData(sshList, "/home/local/ANT/ivkin/projects/amazon/quantiles/kllexperiments/datasets")
@@ -99,7 +100,7 @@ def runAllExp():
     sshList = sshParConnect(hostfile)
     print "Done"
 
-    prepCodeAndData(sshList)
+    # prepCodeAndData(sshList)
 
     queue = readSettingQueue("queue.csv")
     batchSize = 10
@@ -111,10 +112,12 @@ def runAllExp():
         print str(batchBegin) + " out of " + str(queueSize)
         outList  = []
         for ssh in sshList:
-            outList.append(sshRequest(ssh, '''echo ''' +str(batchBegin) +  ''',''' + str(batchBegin + batchSize) + ''')"'''))
-            # outList.append(sshRequest(ssh, '''python27 -c "import exp; exp.runExp(''' +str(batchBegin) +  ''',''' + str(batchBegin + batchSize) + ''')"'''))
+            # outList.append(sshRequest(ssh, '''echo ''' +str(batchBegin) +  ''',''' + str(batchBegin + batchSize) + ''';'''))
+            outList.append(sshRequest(ssh, '''cd kllexperiments; python2    -c "import exp; exp.runExp(''' +str(batchBegin) +  ''',''' + str(batchBegin + batchSize) + ''')"'''))
             batchBegin += batchSize
         printOutList2File(outList, resFile)
+        break
+
     resFile.close()
 
 
