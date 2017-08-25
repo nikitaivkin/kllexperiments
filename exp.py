@@ -10,7 +10,7 @@ from multiprocessing import Pool
 from functools import partial
 
 def runExp(start, end):
-    queue = readSettingQueue("/home/ubuntu/kllexperiments/queue.csv")
+    queue = readSettingQueue("queue.csv")
     queue = queue[start:end]
     dataPath = ''
     data = None
