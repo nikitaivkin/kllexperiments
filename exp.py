@@ -32,6 +32,36 @@ def runExp(start, end):
         settingNew.append(str(np.max(np.abs(np.array(realRanks) - np.array(estRanks)))))
         print ", ".join(settingNew)
 
+def doOneRun(setting):
+    dataPath = setting[0]
+    data = Data.load(dataPath)
+    sketchName = setting[1]
+    space = int(setting[2])
+    cParam = float(setting[3])
+    sketch = getattr(quant, sketchName)(space, cParam)
+    rep = int(setting[4])
+    for item in data:
+        sketch.update(item)
+    estRanks = sketch.ranks()
+    nums, estRanks = zip(*estRanks)
+    realRanks = Data.getQuantiles(data, nums)
+    settingNew = setting[:]
+    settingNew.append(str(np.max(np.abs(np.array(realRanks) - np.array(estRanks)))))
+    return ", ".join(settingNew)
+
+
+def runExpWithPool(start, end):
+    queue = readSettingQueue("queue.csv")
+    queue = queue[start:end]
+    pool = Pool(processes=64)
+    results = pool.map(doOneRun, queue)
+    pool.close()
+    pool.join()
+    for result in results:
+        print result
+
+
+
 def installPy2(sshList):
     outList = sshParRequest(sshList, "export DEBIAN_FRONTEND=noninteractive;  sudo apt-get -y install python-minimal; ")
     sshWaitToFinish(outList) # printOutList(outList)

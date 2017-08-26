@@ -57,6 +57,8 @@ class Plotting:
         for res in open(resfile,'r').readlines():
             resA = res.split(",")
             dataset[resA[0].strip()][resA[1].strip()].append([np.log2(int(resA[2].strip())),float(resA[3].strip()),int(resA[5].strip())])
+        dataset["r6"]["Quant2S"] = np.array(dataset["r6"]["Quant2S"])
+
         dataset["r7"]["Quant2S"] = np.array(dataset["r7"]["Quant2S"])
         dataset["r7"]["Quant5S"] = np.array(dataset["r7"]["Quant5S"])
         dataset["r7"]["CormodeRandom"] = np.array(dataset["r7"]["CormodeRandom"])
@@ -64,7 +66,7 @@ class Plotting:
         dataset["s7"]["Quant5S"] = np.array(dataset["r7"]["Quant5S"])
         dataset["s7"]["CormodeRandom"] = np.array(dataset["r7"]["CormodeRandom"])
 
-        plt.scatter(dataset["r7"]["Quant2S"][:, 0] -0.5 + dataset["r7"]["Quant2S"][:, 1], dataset["r7"]["Quant2S"][:, 2]/(10**7), alpha=0.5)
+        plt.scatter(dataset["r6"]["Quant2S"][:, 0] -0.5 + dataset["r6"]["Quant2S"][:, 1], dataset["r6"]["Quant2S"][:, 2]/(10**6), alpha=0.5)
         plt.yticks(fontsize=14)
         plt.legend(loc='upper right', fontsize=18)
         plt.xticks([5, 6, 7, 8, 9, 10, 11], ["$2^5$", "$2^6$", "$2^7$", "$2^8$", "$2^9$", "$2^{10}$", "$2^{11}$"],
@@ -95,4 +97,4 @@ if __name__ == '__main__':
     #                       "results/rand_cr.csv"], ["KLL", "KLL + sampling",  "KLL + greedy memory", "KLL + greedy memory + samlping", "KLL + limitied randomness", "KLL + limitied randomness + sampling", "RANDOM"])
     #
 
-    Plotting.plotResults("resTemp.csv")
+    Plotting.plotResults("resTemp1.csv")
