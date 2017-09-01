@@ -21,7 +21,7 @@ def runExp(start, end):
             data = Data.load(dataPath)
         sketchName = setting[1]
         space = int(setting[2])
-        dataN = 10**int(space[-5])
+        dataN = 10**int(setting[0][-5])
         algoMode = map(int, list(setting[3]))
         cParam = float(setting[4])
         sketch = getattr(algos, sketchName)(s=space,c=cParam, mode=algoMode, n=dataN)
@@ -40,7 +40,7 @@ def doOneRun(setting):
     data = Data.load(dataPath)
     sketchName = setting[1]
     space = int(setting[2])
-    dataN = 10 ** int(space[-5])
+    dataN = 10 ** int(setting[0][-5])
     algoMode = map(int, list(setting[3]))
     cParam = float(setting[4])
     sketch = getattr(algos, sketchName)(s=space, c=cParam, mode=algoMode, n=dataN)
@@ -178,7 +178,7 @@ if __name__ == '__main__':
                 "./datasets/s6.npy", "./datasets/s7.npy",
                 "./datasets/zi6.npy", "./datasets/zi7.npy",
                 "./datasets/zo6.npy", "./datasets/zo7.npy"]
-    algos = ["KLL", "MRL" , "CormodeRandom"]
+    algos = ['KLL', 'MRL' , 'CormodeRandom']
     srange = 2**np.array(range(5,12))
     modes = ["00000","00001","00010","00011","00100","00101","00110","00111","01000","01001","01010","01011","01100","01101","01110","01111","10000","10001","10010","10011","10100","10101","10110","10111","11000","11001","11010","11011","11100","11101","11110","11111","20000","20001","20010","20011","20100","20101","20110","20111","21000","21001","21010","21011","21100","21101","21110","21111"]
     # crange = np.arange(0.51, 0.99, 0.05)
@@ -187,4 +187,5 @@ if __name__ == '__main__':
     path = "./queue.csv"
     genQueue(datasets, algos, srange, modes, crange, repsNum, path)
 
-    # runAllExp()
+    runAllExp()
+    # runExp(0, 10)
