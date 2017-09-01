@@ -60,9 +60,9 @@ def doOneRun(setting):
 def runExpWithPool(start, end):
     queue = readSettingQueue("queue.csv")
     queue = queue[start:end]
-    pool = Pool(processes=2)#64)
-    # results = pool.map(doOneRun, queue)
-    print doOneRun(queue[0])
+    pool = Pool(processes=64)
+    results = pool.map(doOneRun, queue)
+    # print doOneRun(queue[0])
     pool.close()
     pool.join()
     for result in results:
