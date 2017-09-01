@@ -300,7 +300,306 @@ def test():
     #     maxError = max(maxError, abs(i - j))
     # print(maxError)
 
-    q = CormodeRandom(s = 96, n = 10**6)
+    # q = CormodeRandom(s = 96, n = 10**6)
+    # for item_i, item in enumerate(a):
+    #     q.update(item)
+    #     #if item_i % 10000 == 0:
+    #         #print(item_i)
+    # maxError = 0
+    # for i, j in q.ranks():
+    #     maxError = max(maxError, abs(i - j))
+    # print(maxError)
+    #
+    # q = MRL(s = 96, n = 10**6)
+    # for item_i, item in enumerate(a):
+    #     q.update(item)
+    #     #if item_i % 10000 == 0:
+    #         #print(item_i)
+    # maxError = 0
+    # for i, j in q.ranks():
+    #     maxError = max(maxError, abs(i - j))
+    # print(maxError)
+
+    q = KLL(s=48, mode=(0, 0, 0, 0, 0), n=10 ** 6)
+    for item_i, item in enumerate(a):
+        q.update(item)
+        if item_i % 10000 == 0:
+            print(item_i)
+    maxError = 0
+    for i, j in q.ranks():
+        maxError = max(maxError, abs(i - j))
+    print(maxError)
+    q = KLL(s=96, mode=(0, 0, 0, 0, 1), n=10 ** 6)
+    for item_i, item in enumerate(a):
+        q.update(item)
+        #if item_i % 10000 == 0:
+            #print(item_i)
+    maxError = 0
+    for i, j in q.ranks():
+        maxError = max(maxError, abs(i - j))
+    print(maxError)
+    q = KLL(s=96, mode=(0, 0, 0, 1, 0), n=10 ** 6)
+    for item_i, item in enumerate(a):
+        q.update(item)
+        #if item_i % 10000 == 0:
+            #print(item_i)
+    maxError = 0
+    for i, j in q.ranks():
+        maxError = max(maxError, abs(i - j))
+    print(maxError)
+    q = KLL(s=96, mode=(0, 0, 0, 1, 1), n=10 ** 6)
+    for item_i, item in enumerate(a):
+        q.update(item)
+        #if item_i % 10000 == 0:
+            #print(item_i)
+    maxError = 0
+    for i, j in q.ranks():
+        maxError = max(maxError, abs(i - j))
+    print(maxError)
+    q = KLL(s=96, mode=(0, 0, 1, 0, 0), n=10 ** 6)
+    for item_i, item in enumerate(a):
+        q.update(item)
+        #if item_i % 10000 == 0:
+            #print(item_i)
+    maxError = 0
+    for i, j in q.ranks():
+        maxError = max(maxError, abs(i - j))
+    print(maxError)
+    q = KLL(s=96, mode=(0, 0, 1, 0, 1), n=10 ** 6)
+    for item_i, item in enumerate(a):
+        q.update(item)
+        #if item_i % 10000 == 0:
+            #print(item_i)
+    maxError = 0
+    for i, j in q.ranks():
+        maxError = max(maxError, abs(i - j))
+    print(maxError)
+    q = KLL(s=96, mode=(0, 0, 1, 1, 0), n=10 ** 6)
+    for item_i, item in enumerate(a):
+        q.update(item)
+        #if item_i % 10000 == 0:
+            #print(item_i)
+    maxError = 0
+    for i, j in q.ranks():
+        maxError = max(maxError, abs(i - j))
+    print(maxError)
+    q = KLL(s=96, mode=(0, 0, 1, 1, 1), n=10 ** 6)
+    for item_i, item in enumerate(a):
+        q.update(item)
+        #if item_i % 10000 == 0:
+            #print(item_i)
+    maxError = 0
+    for i, j in q.ranks():
+        maxError = max(maxError, abs(i - j))
+    print(maxError)
+    q = KLL(s=96, mode=(0, 1, 0, 0, 0), n=10 ** 6)
+    for item_i, item in enumerate(a):
+        q.update(item)
+        #if item_i % 10000 == 0:
+            #print(item_i)
+    maxError = 0
+    for i, j in q.ranks():
+        maxError = max(maxError, abs(i - j))
+    print(maxError)
+    q = KLL(s=96, mode=(0, 1, 0, 0, 1), n=10 ** 6)
+    for item_i, item in enumerate(a):
+        q.update(item)
+        #if item_i % 10000 == 0:
+            #print(item_i)
+    maxError = 0
+    for i, j in q.ranks():
+        maxError = max(maxError, abs(i - j))
+    print(maxError)
+    q = KLL(s=96, mode=(0, 1, 0, 1, 0), n=10 ** 6)
+    for item_i, item in enumerate(a):
+        q.update(item)
+        #if item_i % 10000 == 0:
+            #print(item_i)
+    maxError = 0
+    for i, j in q.ranks():
+        maxError = max(maxError, abs(i - j))
+    print(maxError)
+    q = KLL(s=96, mode=(0, 1, 0, 1, 1), n=10 ** 6)
+    for item_i, item in enumerate(a):
+        q.update(item)
+        #if item_i % 10000 == 0:
+            #print(item_i)
+    maxError = 0
+    for i, j in q.ranks():
+        maxError = max(maxError, abs(i - j))
+    print(maxError)
+    q = KLL(s=96, mode=(0, 1, 1, 0, 0), n=10 ** 6)
+    for item_i, item in enumerate(a):
+        q.update(item)
+        #if item_i % 10000 == 0:
+            #print(item_i)
+    maxError = 0
+    for i, j in q.ranks():
+        maxError = max(maxError, abs(i - j))
+    print(maxError)
+    q = KLL(s=96, mode=(0, 1, 1, 0, 1), n=10 ** 6)
+    for item_i, item in enumerate(a):
+        q.update(item)
+        #if item_i % 10000 == 0:
+            #print(item_i)
+    maxError = 0
+    for i, j in q.ranks():
+        maxError = max(maxError, abs(i - j))
+    print(maxError)
+    q = KLL(s=96, mode=(0, 1, 1, 1, 0), n=10 ** 6)
+    for item_i, item in enumerate(a):
+        q.update(item)
+        #if item_i % 10000 == 0:
+            #print(item_i)
+    maxError = 0
+    for i, j in q.ranks():
+        maxError = max(maxError, abs(i - j))
+    print(maxError)
+    q = KLL(s=96, mode=(0, 1, 1, 1, 1), n=10 ** 6)
+    for item_i, item in enumerate(a):
+        q.update(item)
+        #if item_i % 10000 == 0:
+            #print(item_i)
+    maxError = 0
+    for i, j in q.ranks():
+        maxError = max(maxError, abs(i - j))
+    print(maxError)
+    q = KLL(s=96, mode=(1, 0, 0, 0, 0), n=10 ** 6)
+    for item_i, item in enumerate(a):
+        q.update(item)
+        #if item_i % 10000 == 0:
+            #print(item_i)
+    maxError = 0
+    for i, j in q.ranks():
+        maxError = max(maxError, abs(i - j))
+    print(maxError)
+    q = KLL(s=96, mode=(1, 0, 0, 0, 1), n=10 ** 6)
+    for item_i, item in enumerate(a):
+        q.update(item)
+        #if item_i % 10000 == 0:
+            #print(item_i)
+    maxError = 0
+    for i, j in q.ranks():
+        maxError = max(maxError, abs(i - j))
+    print(maxError)
+    q = KLL(s=96, mode=(1, 0, 0, 1, 0), n=10 ** 6)
+    for item_i, item in enumerate(a):
+        q.update(item)
+        #if item_i % 10000 == 0:
+            #print(item_i)
+    maxError = 0
+    for i, j in q.ranks():
+        maxError = max(maxError, abs(i - j))
+    print(maxError)
+    q = KLL(s=96, mode=(1, 0, 0, 1, 1), n=10 ** 6)
+    for item_i, item in enumerate(a):
+        q.update(item)
+        #if item_i % 10000 == 0:
+            #print(item_i)
+    maxError = 0
+    for i, j in q.ranks():
+        maxError = max(maxError, abs(i - j))
+    print(maxError)
+    q = KLL(s=96, mode=(1, 0, 1, 0, 0), n=10 ** 6)
+    for item_i, item in enumerate(a):
+        q.update(item)
+        #if item_i % 10000 == 0:
+            #print(item_i)
+    maxError = 0
+    for i, j in q.ranks():
+        maxError = max(maxError, abs(i - j))
+    print(maxError)
+    q = KLL(s=96, mode=(1, 0, 1, 0, 1), n=10 ** 6)
+    for item_i, item in enumerate(a):
+        q.update(item)
+        #if item_i % 10000 == 0:
+            #print(item_i)
+    maxError = 0
+    for i, j in q.ranks():
+        maxError = max(maxError, abs(i - j))
+    print(maxError)
+    q = KLL(s=96, mode=(1, 0, 1, 1, 0), n=10 ** 6)
+    for item_i, item in enumerate(a):
+        q.update(item)
+        #if item_i % 10000 == 0:
+            #print(item_i)
+    maxError = 0
+    for i, j in q.ranks():
+        maxError = max(maxError, abs(i - j))
+    print(maxError)
+    q = KLL(s=96, mode=(1, 0, 1, 1, 1), n=10 ** 6)
+    for item_i, item in enumerate(a):
+        q.update(item)
+        #if item_i % 10000 == 0:
+            #print(item_i)
+    maxError = 0
+    for i, j in q.ranks():
+        maxError = max(maxError, abs(i - j))
+    print(maxError)
+    q = KLL(s=96, mode=(1, 1, 0, 0, 0), n=10 ** 6)
+    for item_i, item in enumerate(a):
+        q.update(item)
+        #if item_i % 10000 == 0:
+            #print(item_i)
+    maxError = 0
+    for i, j in q.ranks():
+        maxError = max(maxError, abs(i - j))
+    print(maxError)
+    q = KLL(s=96, mode=(1, 1, 0, 0, 1), n=10 ** 6)
+    for item_i, item in enumerate(a):
+        q.update(item)
+        #if item_i % 10000 == 0:
+            #print(item_i)
+    maxError = 0
+    for i, j in q.ranks():
+        maxError = max(maxError, abs(i - j))
+    print(maxError)
+    q = KLL(s=96, mode=(1, 1, 0, 1, 0), n=10 ** 6)
+    for item_i, item in enumerate(a):
+        q.update(item)
+        #if item_i % 10000 == 0:
+            #print(item_i)
+    maxError = 0
+    for i, j in q.ranks():
+        maxError = max(maxError, abs(i - j))
+    print(maxError)
+    q = KLL(s=96, mode=(1, 1, 0, 1, 1), n=10 ** 6)
+    for item_i, item in enumerate(a):
+        q.update(item)
+        #if item_i % 10000 == 0:
+            #print(item_i)
+    maxError = 0
+    for i, j in q.ranks():
+        maxError = max(maxError, abs(i - j))
+    print(maxError)
+    q = KLL(s=96, mode=(1, 1, 1, 0, 0), n=10 ** 6)
+    for item_i, item in enumerate(a):
+        q.update(item)
+        #if item_i % 10000 == 0:
+            #print(item_i)
+    maxError = 0
+    for i, j in q.ranks():
+        maxError = max(maxError, abs(i - j))
+    print(maxError)
+    q = KLL(s=96, mode=(1, 1, 1, 0, 1), n=10 ** 6)
+    for item_i, item in enumerate(a):
+        q.update(item)
+        #if item_i % 10000 == 0:
+            #print(item_i)
+    maxError = 0
+    for i, j in q.ranks():
+        maxError = max(maxError, abs(i - j))
+    print(maxError)
+    q = KLL(s=96, mode=(1, 1, 1, 1, 0), n=10 ** 6)
+    for item_i, item in enumerate(a):
+        q.update(item)
+        #if item_i % 10000 == 0:
+            #print(item_i)
+    maxError = 0
+    for i, j in q.ranks():
+        maxError = max(maxError, abs(i - j))
+    print(maxError)
+    q = KLL(s=96, mode=(1, 1, 1, 1, 1), n=10 ** 6)
     for item_i, item in enumerate(a):
         q.update(item)
         #if item_i % 10000 == 0:
@@ -310,7 +609,7 @@ def test():
         maxError = max(maxError, abs(i - j))
     print(maxError)
 
-    q = MRL(s = 96, n = 10**6)
+    q = KLL(s=96, mode=(2, 0, 0, 0, 0), n=10 ** 6)
     for item_i, item in enumerate(a):
         q.update(item)
         #if item_i % 10000 == 0:
@@ -319,8 +618,7 @@ def test():
     for i, j in q.ranks():
         maxError = max(maxError, abs(i - j))
     print(maxError)
-
-    q = KLL(s=96, mode=(0, 0, 0, 0, 0), n=10 ** 5)
+    q = KLL(s=96, mode=(2, 0, 0, 0, 1), n=10 ** 6)
     for item_i, item in enumerate(a):
         q.update(item)
         #if item_i % 10000 == 0:
@@ -329,7 +627,7 @@ def test():
     for i, j in q.ranks():
         maxError = max(maxError, abs(i - j))
     print(maxError)
-    q = KLL(s=96, mode=(0, 0, 0, 0, 1), n=10 ** 5)
+    q = KLL(s=96, mode=(2, 0, 0, 1, 0), n=10 ** 6)
     for item_i, item in enumerate(a):
         q.update(item)
         #if item_i % 10000 == 0:
@@ -338,7 +636,7 @@ def test():
     for i, j in q.ranks():
         maxError = max(maxError, abs(i - j))
     print(maxError)
-    q = KLL(s=96, mode=(0, 0, 0, 1, 0), n=10 ** 5)
+    q = KLL(s=96, mode=(2, 0, 0, 1, 1), n=10 ** 6)
     for item_i, item in enumerate(a):
         q.update(item)
         #if item_i % 10000 == 0:
@@ -347,7 +645,7 @@ def test():
     for i, j in q.ranks():
         maxError = max(maxError, abs(i - j))
     print(maxError)
-    q = KLL(s=96, mode=(0, 0, 0, 1, 1), n=10 ** 5)
+    q = KLL(s=96, mode=(2, 0, 1, 0, 0), n=10 ** 6)
     for item_i, item in enumerate(a):
         q.update(item)
         #if item_i % 10000 == 0:
@@ -356,7 +654,7 @@ def test():
     for i, j in q.ranks():
         maxError = max(maxError, abs(i - j))
     print(maxError)
-    q = KLL(s=96, mode=(0, 0, 1, 0, 0), n=10 ** 5)
+    q = KLL(s=96, mode=(2, 0, 1, 0, 1), n=10 ** 6)
     for item_i, item in enumerate(a):
         q.update(item)
         #if item_i % 10000 == 0:
@@ -365,7 +663,7 @@ def test():
     for i, j in q.ranks():
         maxError = max(maxError, abs(i - j))
     print(maxError)
-    q = KLL(s=96, mode=(0, 0, 1, 0, 1), n=10 ** 5)
+    q = KLL(s=96, mode=(2, 0, 1, 1, 0), n=10 ** 6)
     for item_i, item in enumerate(a):
         q.update(item)
         #if item_i % 10000 == 0:
@@ -374,7 +672,7 @@ def test():
     for i, j in q.ranks():
         maxError = max(maxError, abs(i - j))
     print(maxError)
-    q = KLL(s=96, mode=(0, 0, 1, 1, 0), n=10 ** 5)
+    q = KLL(s=96, mode=(2, 0, 1, 1, 1), n=10 ** 6)
     for item_i, item in enumerate(a):
         q.update(item)
         #if item_i % 10000 == 0:
@@ -383,7 +681,7 @@ def test():
     for i, j in q.ranks():
         maxError = max(maxError, abs(i - j))
     print(maxError)
-    q = KLL(s=96, mode=(0, 0, 1, 1, 1), n=10 ** 5)
+    q = KLL(s=96, mode=(2, 1, 0, 0, 0), n=10 ** 6)
     for item_i, item in enumerate(a):
         q.update(item)
         #if item_i % 10000 == 0:
@@ -392,7 +690,7 @@ def test():
     for i, j in q.ranks():
         maxError = max(maxError, abs(i - j))
     print(maxError)
-    q = KLL(s=96, mode=(0, 1, 0, 0, 0), n=10 ** 5)
+    q = KLL(s=96, mode=(2, 1, 0, 0, 1), n=10 ** 6)
     for item_i, item in enumerate(a):
         q.update(item)
         #if item_i % 10000 == 0:
@@ -401,7 +699,7 @@ def test():
     for i, j in q.ranks():
         maxError = max(maxError, abs(i - j))
     print(maxError)
-    q = KLL(s=96, mode=(0, 1, 0, 0, 1), n=10 ** 5)
+    q = KLL(s=96, mode=(2, 1, 0, 1, 0), n=10 ** 6)
     for item_i, item in enumerate(a):
         q.update(item)
         #if item_i % 10000 == 0:
@@ -410,7 +708,7 @@ def test():
     for i, j in q.ranks():
         maxError = max(maxError, abs(i - j))
     print(maxError)
-    q = KLL(s=96, mode=(0, 1, 0, 1, 0), n=10 ** 5)
+    q = KLL(s=96, mode=(2, 1, 0, 1, 1), n=10 ** 6)
     for item_i, item in enumerate(a):
         q.update(item)
         #if item_i % 10000 == 0:
@@ -419,7 +717,7 @@ def test():
     for i, j in q.ranks():
         maxError = max(maxError, abs(i - j))
     print(maxError)
-    q = KLL(s=96, mode=(0, 1, 0, 1, 1), n=10 ** 5)
+    q = KLL(s=96, mode=(2, 1, 1, 0, 0), n=10 ** 6)
     for item_i, item in enumerate(a):
         q.update(item)
         #if item_i % 10000 == 0:
@@ -428,7 +726,7 @@ def test():
     for i, j in q.ranks():
         maxError = max(maxError, abs(i - j))
     print(maxError)
-    q = KLL(s=96, mode=(0, 1, 1, 0, 0), n=10 ** 5)
+    q = KLL(s=96, mode=(2, 1, 1, 0, 1), n=10 ** 6)
     for item_i, item in enumerate(a):
         q.update(item)
         #if item_i % 10000 == 0:
@@ -437,7 +735,7 @@ def test():
     for i, j in q.ranks():
         maxError = max(maxError, abs(i - j))
     print(maxError)
-    q = KLL(s=96, mode=(0, 1, 1, 0, 1), n=10 ** 5)
+    q = KLL(s=96, mode=(2, 1, 1, 1, 0), n=10 ** 6)
     for item_i, item in enumerate(a):
         q.update(item)
         #if item_i % 10000 == 0:
@@ -446,305 +744,7 @@ def test():
     for i, j in q.ranks():
         maxError = max(maxError, abs(i - j))
     print(maxError)
-    q = KLL(s=96, mode=(0, 1, 1, 1, 0), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(0, 1, 1, 1, 1), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(1, 0, 0, 0, 0), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(1, 0, 0, 0, 1), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(1, 0, 0, 1, 0), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(1, 0, 0, 1, 1), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(1, 0, 1, 0, 0), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(1, 0, 1, 0, 1), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(1, 0, 1, 1, 0), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(1, 0, 1, 1, 1), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(1, 1, 0, 0, 0), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(1, 1, 0, 0, 1), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(1, 1, 0, 1, 0), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(1, 1, 0, 1, 1), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(1, 1, 1, 0, 0), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(1, 1, 1, 0, 1), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(1, 1, 1, 1, 0), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(1, 1, 1, 1, 1), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-
-    q = KLL(s=96, mode=(2, 0, 0, 0, 0), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(2, 0, 0, 0, 1), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(2, 0, 0, 1, 0), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(2, 0, 0, 1, 1), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(2, 0, 1, 0, 0), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(2, 0, 1, 0, 1), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(2, 0, 1, 1, 0), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(2, 0, 1, 1, 1), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(2, 1, 0, 0, 0), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(2, 1, 0, 0, 1), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(2, 1, 0, 1, 0), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(2, 1, 0, 1, 1), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(2, 1, 1, 0, 0), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(2, 1, 1, 0, 1), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(2, 1, 1, 1, 0), n=10 ** 5)
-    for item_i, item in enumerate(a):
-        q.update(item)
-        #if item_i % 10000 == 0:
-            #print(item_i)
-    maxError = 0
-    for i, j in q.ranks():
-        maxError = max(maxError, abs(i - j))
-    print(maxError)
-    q = KLL(s=96, mode=(2, 1, 1, 1, 1), n=10 ** 5)
+    q = KLL(s=96, mode=(2, 1, 1, 1, 1), n=10 ** 6)
     for item_i, item in enumerate(a):
         q.update(item)
         #if item_i % 10000 == 0:
