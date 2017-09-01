@@ -188,4 +188,5 @@ if __name__ == '__main__':
     genQueue(datasets, algos, srange, modes, crange, repsNum, path)
 
     runAllExp()
+    # runExpWithPool
     # runExp(0, 10)

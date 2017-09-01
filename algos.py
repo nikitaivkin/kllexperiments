@@ -15,7 +15,7 @@ class KLL(object):
         self.samplingMode = mode[2]
         self.oneTossMode = mode[3]
         self.varOptMode = mode[4]
-        print(mode)
+        # print(mode)
 
         self.s = s
         self.n = n
@@ -70,9 +70,9 @@ class KLL(object):
                 self.compress()
                 if (self.greedyMode != 2):
                     # assert (self.size < self.maxSize)
-                    assert (self.maxSize < self.s + 2 * ceil(log(self.n, 2)))
+                    assert (self.size < self.s + 2 * ceil(log(self.n, 2)), "over1")
                 if (self.greedyMode == 2):
-                    assert (self.size < self.s)
+                    assert (self.size < self.s, "over2")
 
 
     def compress(self):
@@ -82,7 +82,7 @@ class KLL(object):
                     self.grow()
                     if self.samplingMode and h + 1 >= self.H:
                         h-=1
-                assert (h >= 0)
+                assert (h >= 0, "under1")
                 if not self.oneTossMode:
                     self.compactors[h + 1].extend(self.compactors[h].compact(random() < 0.5, (random() < 0.5)*self.varOptMode ))
                 else:
