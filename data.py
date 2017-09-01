@@ -11,7 +11,7 @@ class Data:
 
     @staticmethod
     def onTheFly(n, order=''):
-        random.seed(42)
+        # random.seed(42)
         orders = ['sorted', 'zoomin', 'zoomout', 'sqrt', 'random', 'test']
         assert (order in orders)
         if order == 'sorted':  # sorted order
