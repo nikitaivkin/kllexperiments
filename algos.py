@@ -68,10 +68,10 @@ class KLL(object):
                                     (self.greedyMode == 1 and (self.size >= self.maxSize)) or \
                                     (self.greedyMode == 2 and (self.size >= self.s)):
                 self.compress()
-                if (self.greedyMode != 2):
+                if (self.samplingMode != 1):
                     # assert (self.size < self.maxSize)
                     assert self.size < self.s + 2 * ceil(log(self.n, 2)), "over1"
-                if (self.greedyMode == 2):
+                if (self.samplingMode == 1):
                     assert self.size < self.s, "over2"
 
 
@@ -320,7 +320,7 @@ def test():
     #     maxError = max(maxError, abs(i - j))
     # print(maxError)
 
-    q = KLL(s=48, mode=(0, 0, 0, 0, 0), n=10 ** 6)
+    q = KLL(s=64, mode=(2, 1, 1, 1, 1), n=10 ** 6)
     for item_i, item in enumerate(a):
         q.update(item)
         if item_i % 10000 == 0:

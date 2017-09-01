@@ -60,7 +60,7 @@ def doOneRun(setting):
 def runExpWithPool(start, end):
     queue = readSettingQueue("queue.csv")
     queue = queue[start:end]
-    pool = Pool(processes=64)
+    pool = Pool(processes=60)
     results = pool.map(doOneRun, queue)
     # print doOneRun(queue[0])
     pool.close()
@@ -192,7 +192,7 @@ if __name__ == '__main__':
     repsNum = 20
     path = "./queue.csv"
     genQueue(datasets, algos, srange, modes, crange, repsNum, path)
-    runExpWithPool(1,10)
-    # runAllExp()
+    # runExpWithPool(1,10)
+    runAllExp()
     # runExpWithPool
     # runExp(0, 10)
