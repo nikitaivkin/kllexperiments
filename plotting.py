@@ -33,49 +33,49 @@ class Plotting:
         dataset["s6"]["MRL00000"] = []
         dataset["s6"]["CormodeRandom00000"] =[]
         dataset["s6"]["KLL00000"] = []
-        dataset["s6"]["KLL00001"] = []
-        dataset["s6"]["KLL00010"] = []
-        dataset["s6"]["KLL00100"] = []
-        dataset["s6"]["KLL01000"] = []
+        dataset["s6"]["KLL21111"] = []
+        dataset["s6"]["KLL21110"] = []
+        dataset["s6"]["KLL21100"] = []
+        dataset["s6"]["KLL21000"] = []
         dataset["s6"]["KLL10000"] = []
         dataset["s6"]["KLL20000"] = []
-        dataset["s6"]["KLL11111"] = []
+        dataset["s6"]["KLL00000"] = []
         dataset["s6"]["KLL21111"] = []
         dataset["r6"] = {}
         dataset["r6"]["MRL00000"] = []
         dataset["r6"]["CormodeRandom00000"] =[]
         dataset["r6"]["KLL00000"] = []
-        dataset["r6"]["KLL00001"] = []
-        dataset["r6"]["KLL00010"] = []
-        dataset["r6"]["KLL00100"] = []
-        dataset["r6"]["KLL01000"] = []
+        dataset["r6"]["KLL21111"] = []
+        dataset["r6"]["KLL21110"] = []
+        dataset["r6"]["KLL21100"] = []
+        dataset["r6"]["KLL21000"] = []
         dataset["r6"]["KLL10000"] = []
         dataset["r6"]["KLL20000"] = []
-        dataset["r6"]["KLL11111"] = []
+        dataset["r6"]["KLL00000"] = []
         dataset["r6"]["KLL21111"] = []
         dataset["zi6"] = {}
         dataset["zi6"]["MRL00000"] = []
         dataset["zi6"]["CormodeRandom00000"] =[]
         dataset["zi6"]["KLL00000"] = []
-        dataset["zi6"]["KLL00001"] = []
-        dataset["zi6"]["KLL00010"] = []
-        dataset["zi6"]["KLL00100"] = []
-        dataset["zi6"]["KLL01000"] = []
+        dataset["zi6"]["KLL21111"] = []
+        dataset["zi6"]["KLL21110"] = []
+        dataset["zi6"]["KLL21100"] = []
+        dataset["zi6"]["KLL21000"] = []
         dataset["zi6"]["KLL10000"] = []
         dataset["zi6"]["KLL20000"] = []
-        dataset["zi6"]["KLL11111"] = []
+        dataset["zi6"]["KLL00000"] = []
         dataset["zi6"]["KLL21111"] = []
         dataset["zo6"] = {}
         dataset["zo6"]["MRL00000"] = []
         dataset["zo6"]["CormodeRandom00000"] = []
         dataset["zo6"]["KLL00000"] = []
-        dataset["zo6"]["KLL00001"] = []
-        dataset["zo6"]["KLL00010"] = []
-        dataset["zo6"]["KLL00100"] = []
-        dataset["zo6"]["KLL01000"] = []
+        dataset["zo6"]["KLL21111"] = []
+        dataset["zo6"]["KLL21110"] = []
+        dataset["zo6"]["KLL21100"] = []
+        dataset["zo6"]["KLL21000"] = []
         dataset["zo6"]["KLL10000"] = []
         dataset["zo6"]["KLL20000"] = []
-        dataset["zo6"]["KLL11111"] = []
+        dataset["zo6"]["KLL00000"] = []
         dataset["zo6"]["KLL21111"] = []
 
         for res in open(resfile,'r').readlines():
@@ -83,14 +83,14 @@ class Plotting:
             dataset[resA[0].strip()][resA[1].strip() + resA[3].strip()].append([np.log2(int(resA[2].strip())),float(resA[4].strip()),int(float(resA[6].strip()))])
         dataset["r6"]["MRL00000"] = np.array(dataset["r6"]["MRL00000"] )
         dataset["r6"]["CormodeRandom00000"] = np.array(dataset["r6"]["CormodeRandom00000"] )
-        dataset["r6"]["KLL00001"] = np.array(dataset["r6"]["KLL00001"] )
-        dataset["r6"]["KLL00010"] = np.array(dataset["r6"]["KLL00010"] )
-        dataset["r6"]["KLL00100"] = np.array(dataset["r6"]["KLL00100"] )
-        dataset["r6"]["KLL01000"] = np.array(dataset["r6"]["KLL01000"] )
+        dataset["r6"]["KLL21111"] = np.array(dataset["r6"]["KLL21111"] )
+        dataset["r6"]["KLL21110"] = np.array(dataset["r6"]["KLL21110"] )
+        dataset["r6"]["KLL21100"] = np.array(dataset["r6"]["KLL21100"] )
+        dataset["r6"]["KLL21000"] = np.array(dataset["r6"]["KLL21000"] )
         dataset["r6"]["KLL10000"] = np.array(dataset["r6"]["KLL10000"] )
         dataset["r6"]["KLL20000"] = np.array(dataset["r6"]["KLL20000"] )
-        dataset["r6"]["KLL11111"] = np.array(dataset["r6"]["KLL11111"] )
-        dataset["r6"]["KLL21111"] = np.array(dataset["r6"]["KLL21111"] ) 
+        dataset["r6"]["KLL00000"] = np.array(dataset["r6"]["KLL00000"] )
+        # dataset["r6"]["KLL21111"] = np.array(dataset["r6"]["KLL21111"] ) 
 
         # dataset["r6"]["Quant2S"] = np.array(dataset["r6"]["Quant2S"])
 
@@ -102,16 +102,16 @@ class Plotting:
         # dataset["s7"]["CormodeRandom"] = np.array(dataset["r7"]["CormodeRandom"])
 
         # plt.scatter(dataset["r6"]["Quant2S"][:, 0] -0.5 + dataset["r6"]["Quant2S"][:, 1], dataset["r6"]["Quant2S"][:, 2]/(10**6), alpha=0.5)
-        plt.scatter(dataset["r6"]["MRL00000"][:, 0] -0.05 + 3*0.01, dataset["r6"]["MRL00000"][:, 2]/(10**6), alpha=0.5)
-        plt.scatter(dataset["r6"]["CormodeRandom00000"][:, 0] -0.05 + 3*0.02, dataset["r6"]["CormodeRandom00000"][:, 2]/(10**6), alpha=0.5)
-        plt.scatter(dataset["r6"]["KLL00001"][:, 0] -0.05 + 3*0.03, dataset["r6"]["KLL00001"][:, 2]/(10**6), alpha=0.5)
-        plt.scatter(dataset["r6"]["KLL00010"][:, 0] -0.05 + 3*0.04, dataset["r6"]["KLL00010"][:, 2]/(10**6), alpha=0.5)
-        plt.scatter(dataset["r6"]["KLL00100"][:, 0] -0.05 + 3*0.05, dataset["r6"]["KLL00100"][:, 2]/(10**6), alpha=0.5)
-        plt.scatter(dataset["r6"]["KLL01000"][:, 0] -0.05 + 3*0.06, dataset["r6"]["KLL01000"][:, 2]/(10**6), alpha=0.5)
+        # plt.scatter(dataset["r6"]["MRL00000"][:, 0] -0.05 + 3*0.01, dataset["r6"]["MRL00000"][:, 2]/(10**6), alpha=0.5)
+        # plt.scatter(dataset["r6"]["CormodeRandom00000"][:, 0] -0.05 + 3*0.02, dataset["r6"]["CormodeRandom00000"][:, 2]/(10**6), alpha=0.5)
+        plt.scatter(dataset["r6"]["KLL21111"][:, 0] -0.05 + 3*0.03, dataset["r6"]["KLL21111"][:, 2]/(10**6), alpha=0.5)
+        plt.scatter(dataset["r6"]["KLL21110"][:, 0] -0.05 + 3*0.04, dataset["r6"]["KLL21110"][:, 2]/(10**6), alpha=0.5)
+        plt.scatter(dataset["r6"]["KLL21100"][:, 0] -0.05 + 3*0.05, dataset["r6"]["KLL21100"][:, 2]/(10**6), alpha=0.5)
+        plt.scatter(dataset["r6"]["KLL21000"][:, 0] -0.05 + 3*0.06, dataset["r6"]["KLL21000"][:, 2]/(10**6), alpha=0.5)
         plt.scatter(dataset["r6"]["KLL10000"][:, 0] -0.05 + 3*0.07, dataset["r6"]["KLL10000"][:, 2]/(10**6), alpha=0.5)
         plt.scatter(dataset["r6"]["KLL20000"][:, 0] -0.05 + 3*0.08, dataset["r6"]["KLL20000"][:, 2]/(10**6), alpha=0.5)
-        plt.scatter(dataset["r6"]["KLL11111"][:, 0] -0.05 + 3*0.09, dataset["r6"]["KLL11111"][:, 2]/(10**6), alpha=0.5)
-        plt.scatter(dataset["r6"]["KLL21111"][:, 0] -0.05 + 3*0.1, dataset["r6"]["KLL21111"][:, 2]/(10**6), alpha=0.5)
+        plt.scatter(dataset["r6"]["KLL00000"][:, 0] -0.05 + 3*0.09, dataset["r6"]["KLL00000"][:, 2]/(10**6), alpha=0.5)
+        # plt.scatter(dataset["r6"]["KLL21111"][:, 0] -0.05 + 3*0.1, dataset["r6"]["KLL21111"][:, 2]/(10**6), alpha=0.5)
 
 
         plt.yticks(fontsize=14)
@@ -144,4 +144,4 @@ if __name__ == '__main__':
     #                       "results/rand_cr.csv"], ["KLL", "KLL + sampling",  "KLL + greedy memory", "KLL + greedy memory + samlping", "KLL + limitied randomness", "KLL + limitied randomness + sampling", "RANDOM"])
     #
 
-    Plotting.plotResults("resTemp2.csv")
+    Plotting.plotResults("results.csv")
