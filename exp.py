@@ -43,7 +43,7 @@ def doOneRun(setting):
     dataN = 10 ** int(setting[0][-5])
     algoMode = map(int, list(setting[3]))
     cParam = float(setting[4])
-    sketch = KLL(s=space, c=cParam, mode=algoMode, n=dataN)
+    sketch = CormodeRandom(s=space, c=cParam, mode=algoMode, n=dataN)
     rep = int(setting[5])
     for item_i, item in enumerate(data):
         sketch.update(item)
@@ -183,14 +183,14 @@ if __name__ == '__main__':
     #             "./datasets/s6.npy", "./datasets/s7.npy",
     #             "./datasets/zi6.npy", "./datasets/zi7.npy",
     #             "./datasets/zo6.npy", "./datasets/zo7.npy"]
-    algos = ['KLL']
+    algos = ['CormodeRandom']
     srange = 2**np.array(range(6,11))
     # modes = ["00000","00001","00010","00011","00100","00101","00110","00111","01000","01001","01010","01011","01100","01101","01110","01111","10000","10001","10010","10011","10100","10101","10110","10111","11000","11001","11010","11011","11100","11101","11110","11111","20000","20001","20010","20011","20100","20101","20110","20111","21000","21001","21010","21011","21100","21101","21110","21111"]
-    modes = ["00000","10000","20000","21000","21100","21110","21111"]
-    # modes = ["00000"]#,"00001","00010","00100","01000","10000","11111","20000","21111"]
+    # modes = ["00000","10000","20000","21000","21100","21110","21111"]
+    modes = ["00000"]#,"00001","00010","00100","01000","10000","11111","20000","21111"]
     # crange = np.arange(0.51,              0.99, 0.05)
     crange = np.arange(0.1, 0.5, 0.05)
-    repsNum = 20
+    repsNum = 100
     path = "./queue.csv"
     genQueue(datasets, algos, srange, modes, crange, repsNum, path)
     # runExpWithPool(1,10)
